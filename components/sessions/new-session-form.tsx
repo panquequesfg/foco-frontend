@@ -2,7 +2,7 @@
 
 import {useQueryClient, useMutation} from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
+import {useForm} from "react-hook-form"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input"
 import {Loader2} from "lucide-react";
 import {sessions} from "@/lib/api/sessions";
-import {type SessionCreate} from "@/lib/api/sessions/types";
+import {type SessionCreate, type SessionFields} from "@/lib/api/sessions/types";
 import { Checkbox } from "@/components/ui/checkbox"
 import { useRouter } from 'next/navigation'
 import {type ApiResponse} from "@/lib/dataProvider";
@@ -27,6 +27,7 @@ export function NewSessionForm() {
   const router = useRouter()
   const {toast} = useToast();
   const mutation = useMutation(sessions.mutations.create(queryClient));
+
   const form = useForm<SessionCreate>({
     mode: "onChange",
     resolver: zodResolver(sessions.schemas.create),
@@ -45,7 +46,7 @@ export function NewSessionForm() {
 
   const onSubmit = (values: SessionCreate) => {
     mutation.mutate({data: values}, {
-      onSuccess: (res: ApiResponse<SessionCreate>) => {
+      onSuccess: (res: ApiResponse<{ session: SessionFields }>) => {
         console.log('response', res)
         if (!res?.data?.session?.id) {
           toast({ description: 'Hubo un error al obtener la sesión creada.' });

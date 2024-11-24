@@ -10,7 +10,7 @@ import {useQueryClient, useMutation} from "@tanstack/react-query";
 import {participations} from "@/lib/api/participations";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import {type ParticipationCreate} from "@/lib/api/participations/types";
+import {type ParticipationCreate, type ParticipationFields} from "@/lib/api/participations/types";
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -48,7 +48,7 @@ export function JoinSessionForm() {
 
   const onSubmit = (values: ParticipationCreate) => {
     mutation.mutate({data: values}, {
-      onSuccess: (res: ApiResponse<ParticipationCreate>) => {
+      onSuccess: (res: ApiResponse<ParticipationFields>) => {
         console.log('response', res)
         if (!res?.data?.session_id) {
           toast({ description: 'Hubo un error al obtener la sesión creada.' });
