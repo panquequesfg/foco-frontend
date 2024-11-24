@@ -2,13 +2,13 @@
 
 import {useQuery} from "@tanstack/react-query";
 import {sessions} from "@/lib/api/sessions";
-import {use, useEffect} from 'react';
+import {type ReactNode, use, useEffect} from 'react';
 import { type SessionShow} from "@/lib/api/sessions/types";
 import { useRouter } from "next/navigation";
 import {useToast} from "@/hooks/use-toast";
 import SessionContext from './context';
 
-export default function SessionLayout({ params, children }: { params: Promise<{ slug: string }> }) {
+export default function SessionLayout({ params, children }: { params: Promise<{ slug: string }>, children: ReactNode }) {
   const { slug: sessionId } = use(params);
   const router = useRouter();
   const {toast} = useToast();
