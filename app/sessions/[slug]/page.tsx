@@ -3,7 +3,7 @@
 import {useContext} from 'react';
 import {Loader2} from "lucide-react";
 import {useEffect} from 'react';
-import {SessionContext} from "@/app/sessions/[slug]/layout";
+import SessionContext from './context';
 import {useRouter} from "next/navigation";
 
 export default function Session() {
