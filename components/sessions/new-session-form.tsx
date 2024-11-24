@@ -1,6 +1,6 @@
 "use client"
 
-import {useQueryClient, useMutation, type MutateOptions} from "@tanstack/react-query";
+import {useQueryClient, useMutation} from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input"
 import {Loader2} from "lucide-react";
 import {sessions} from "@/lib/api/sessions";
-import {type SessionCreate, SessionFields} from "@/lib/api/sessions/types";
+import {type SessionCreate} from "@/lib/api/sessions/types";
 import { Checkbox } from "@/components/ui/checkbox"
 import { useRouter } from 'next/navigation'
 import {type ApiResponse} from "@/lib/dataProvider";

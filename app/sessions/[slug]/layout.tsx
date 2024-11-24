@@ -3,7 +3,6 @@
 import { createContext } from 'react';
 import {useQuery} from "@tanstack/react-query";
 import {sessions} from "@/lib/api/sessions";
-import {Loader2} from "lucide-react";
 import {use, useEffect} from 'react';
 import { type SessionShow} from "@/lib/api/sessions/types";
 import { useRouter } from "next/navigation";
