@@ -2,7 +2,7 @@
 
 import {useContext, useEffect} from "react";
 import {Loader2} from "lucide-react";
-import {SessionContext} from "@/app/sessions/[slug]/layout";
+import SessionContext from '../context';
 import {useRouter} from "next/navigation";
 import {useToast} from "@/hooks/use-toast";
 

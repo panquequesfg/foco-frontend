@@ -1,17 +1,12 @@
 "use client"
 
-import { createContext } from 'react';
 import {useQuery} from "@tanstack/react-query";
 import {sessions} from "@/lib/api/sessions";
 import {use, useEffect} from 'react';
 import { type SessionShow} from "@/lib/api/sessions/types";
 import { useRouter } from "next/navigation";
 import {useToast} from "@/hooks/use-toast";
-
-interface SessionContextType {
-  session: SessionShow | undefined;
-}
-export const SessionContext = createContext<SessionContextType>({ session: undefined });
+import SessionContext from './context';
 
 export default function SessionLayout({ params, children }: { params: Promise<{ slug: string }> }) {
   const { slug: sessionId } = use(params);

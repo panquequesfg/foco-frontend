@@ -9,7 +9,8 @@ export const fields = z.object({
   updated_at: z.string(),
   send_transcript: z.boolean().default(false),
   send_summary: z.boolean().default(false),
-  summary: z.string().nullable()
+  summary: z.string().nullable(),
+  status: z.enum(['started', 'finished'])
 })
 export const relations = z.object({
   user: users.schemas.create,
